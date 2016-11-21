@@ -48,7 +48,11 @@ class ImagesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request,[
+'name'=>'required|unique:images,i_name'
+
+
+            ]);
 $path=public_path().'/upload';
 
 
