@@ -112,6 +112,7 @@ return redirect('theme');
  Theme::create([
 
 't_name'=>$name_theme,
+'t_path'=>$name_theme
 // 't_path'=>$filename
             ]);
 
@@ -161,7 +162,7 @@ $themes=Theme::all();
         $this->validate($request,[
 
 
-'name'=>'required'
+'multi'=>'required'
 
             ]);
 $inFolder=$request->get('name');
@@ -228,7 +229,7 @@ $path=public_path()."/themes/".$inFolder;
 // }
 }
 
-$theme->t_name=$name;
+// $theme->t_name=$name;
 $theme->save();
 return redirect()->route('theme.index'); 
 
@@ -245,7 +246,10 @@ return redirect()->route('theme.index');
     public function destroy($id)
     {
        $theme=Theme::find($id);
+         File::deleteDirectory(public_path('/themes/'.$theme->t_name));
        $theme->delete();
+
+    
        return redirect()->back();
     }
 }

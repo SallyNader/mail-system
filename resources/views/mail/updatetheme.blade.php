@@ -17,7 +17,7 @@
                     <h5></h5>
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                Update Theme
+                                Update &nbsp{{$theme->t_name}}&nbsp Theme
                             </div>
                             <div class="panel-body" style="width:600px">
                                
@@ -34,11 +34,13 @@
 
                          
                             <label>Name of Theme</label>
-                            <input type="text" name="name" class="form-control" value="{{$theme->t_name}}" />
+                          <!--  <input type="text" name="name" class="form-control" value="{{$theme->t_name}}" />
 
                              <p style="color:blue">{{$errors->first('name')}}</p>
+                             -->
                             <p class="help-block"></p>
                                 <input type="file" name="multi[]" multiple>
+                                <p style="color:blue">{{$errors->first('multi')}}</p>
 <br/><br/>
                         </div>
                     </div>  
