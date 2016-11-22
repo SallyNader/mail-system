@@ -16,7 +16,7 @@
                  
                  <!-- /. ROW  -->    
 
- <div class="col-md-4">
+ <div class="col-md-4"> 
                         
                     </div>
                 
@@ -28,12 +28,28 @@
                         
                     
 
+
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="home">
 
                             @foreach($lists as $list)
-                                  <h4>{{$list->l_name}}</h4>
+                                  <h4>{{$list->l_name}}
+
+
+                                  </h4>
+                               
+                                    
+
+<h1>
+<form action="{{url('list/'.$list->l_id)}}" method="POST">
+    
+ {!! method_field('DELETE') !!} 
+
+          {{ csrf_field() }}
+    <input type="submit" name="delete" value="delete list" class="btn btn-danger">
+</form></h1>
+                                    
                           
 
                              <h3> </h3>  
@@ -47,122 +63,51 @@
                                 <tr>
                                     <th>id</th>
                                     <th>Email</th>
-                                   
-                                    <th>Delete</th>
+                               
                                     
                                 </tr>
                             </thead>
                             <tbody>
+
+
+
                              @foreach($list->contacts as  $l)
                                 <tr>
 
                                     <td>{{$l->c_id}}</td>
                                     <td>{{$l->c_mail}}</td>
                                    
-                                                    <td  style="width:100px">  <button type="button" class="btn btn-danger">Delete</button></td>
+
+
+                                                    
                                     
                                 </tr>
                                  @endforeach
                             </tbody>
                         </table>
 
+                        <form action="{{url('list/deletecontact')}}" method="post">
+                                
+                                    {{ csrf_field() }}
+
+
+
+                                    <input type="hidden" name="list_id" value="{{$list->l_id}}"/>
+
+
+
+
+                                    
+
+                                     <input type="submit" name="remove" value="Delete All From List" class="btn btn-warning">
+                                                      </form>
+                                                      <br><br/>
+                                 
+
                                      @endforeach
                     </div>   
                             </div>
-                            <div class="tab-pane fade" id="profile">
-                                <h4>Daleel</h4>
-                             <table class="table table-striped table-bordered table-hover" style="width:600px">
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Email</th>
-                                   
-                                    <th>Delete</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                   
-                                                    <td  style="width:100px">  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                              
-                                       <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    
-                                                       <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                    
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                      
-                                                   <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                            </div>
-                            <div class="tab-pane fade" id="messages">
-                                <h4>Alboraq</h4>
-                                <table class="table table-striped table-bordered table-hover" style="width:600px">
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Email</th>
-                                   
-                                    <th>Delete</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                   
-                                                    <td  style="width:100px">  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                              
-                                       <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    
-                                                       <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                    
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                      
-                                                   <td>  <button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                            </div>
+                            
 
                         </div>
                     </div>       

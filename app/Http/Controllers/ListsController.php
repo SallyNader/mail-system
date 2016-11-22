@@ -114,8 +114,34 @@ return view('mail.alllists',compact('lists'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+public function destroyContact(Request $request){
+
+$list_id=$request->get('list_id');
+
+$contact_id=$request->get('contact_id');
+
+$list=Lists::find($list_id);
+
+
+// return  $list_id ."    ".$contact_id;
+
+$list->contacts()->detach();
+
+
+return redirect('list');
+
+
+}
+
     public function destroy($id)
     {
-        //
+
+
+        $list=Lists::find($id);
+        $list->delete();
+
+        return redirect()->back();
     }
 }

@@ -124,7 +124,7 @@ return redirect('image');
 
    $this->validate($request,[
 
-'name'=>'required'
+'name'=>'required|unique:images,i_name'
 
     ]);
 

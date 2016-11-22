@@ -21,6 +21,10 @@ Route::post('theme/uploadtheme','ThemesController@uploadtheme');
 Route::resource('theme','ThemesController');
 Route::resource('image','ImagesController');
 
+
+Route::post('list/deletecontact','ListsController@destroyContact');
+
+
 Route::resource('list','ListsController');
 
 Route::post('contact/addtolist','ContactsController@addToList');
