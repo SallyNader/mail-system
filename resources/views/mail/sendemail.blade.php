@@ -77,6 +77,9 @@
                         <div class="form-group" style="margin-left: 30px">
   <label for="comment">Message</label>
   <textarea class="form-control" rows="5" id="comment" style="width:500px" name="message" >{{old('message')}}</textarea>
+
+
+   <p style="color:blue">{{$errors->first('message')}}</p>
 </div>
             
 

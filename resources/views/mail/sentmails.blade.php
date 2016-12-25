@@ -29,9 +29,9 @@
 
                               <tr  style="background-color: #d6f5f4">
                                         
-                                        <td>{{$c->person}}</td>
+                                        <td><?php echo substr($c->person,0,10) ?>...</td>
                                         
-                                        <td>{{substr($c->message,0,20)}} </td>
+                                        <td>{{substr($c->subject,0,20)}}...</td>
                                         
                                         <td>{{$c->created_at}}</td>
                                         <td><a href="{{ route('mail.show',$c->m_id) }}">open</a></td>

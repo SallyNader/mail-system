@@ -12,6 +12,7 @@ use App\Sent;
 use App\Theme;
 use Illuminate\Support\Facades\Mail;
 
+
 class MailsController extends Controller
 {
 
@@ -69,7 +70,12 @@ return view('mail.sentmails',compact('mails'));
 
 
 
+$this->validate($request,[
 
+'message'=>'required'
+
+
+    ]);
 
 
 
@@ -89,7 +95,7 @@ return view('mail.sentmails',compact('mails'));
 
 
 
-$message=$request->get('message');
+$m=$request->get('message');
 $to=$request->get('to');
 
         $user=[];
@@ -169,16 +175,52 @@ $user[]=$ll->c_mail;
 // foreach($user as  $l){
 
 
-// //echo $l;
-// //echo "<br>";
+// echo $l;
+// echo "<br>";
 
 // }
 
-// }
+// echo $message."---".$subject;
+
+// // }
 
 
 
 
+if(!empty($m) and !empty($user)){
+
+  Mail::send('template.mail', ['m'=>$m,'subject'=>$subject,'user'=>$user], function ($message) use ($subject,$m,$user) {
+           $message->from("cayshly@gmail.com", "Cayshly Trading Network");
+
+            $message->to($user)->subject($subject);
+        });
+
+
+
+for ($i=0;$i<count($user);$i++) {
+    # code...
+
+Mails::create([
+
+"person"=>$user[$i],
+"subject"=>$subject,
+"message"=>$m,
+"theme"=>$theme
+
+
+
+
+
+    ]);
+}//end foreach
+
+
+return redirect('mail');
+}else {
+    echo '<script>';
+echo 'alert("you must choose at least one contact")';
+echo '</script>';
+}
 
 // 
 
@@ -189,24 +231,24 @@ $user[]=$ll->c_mail;
 
 
 
-foreach ($user as $key => $value) {
+// foreach ($user as $key => $value) {
+
+
+
+// $data=['message'=>$message];
+
+
+// Mail::send('template.mail', ['message'=>$message], function($message) use($data) {
+
+//     $message->from('sallynaderahmed@gmail.com',"cayshly");
+//     $message->to("SALLY.NADER.AHMED@hotmail.com")->subject('Welcome!');
+// });
 
 
 
 
 
-
-Mail::send('template.mail', $user, function($message) use($value) {
-
-    $message->from('sallynaderahmed@gmail.com');
-    $message->to($value)->subject('Welcome!');
-});
-
-
-
-
-
-}
+// }
 
 
 
@@ -220,7 +262,7 @@ Mail::send('template.mail', $user, function($message) use($value) {
 
 
 
-
+// return redirect('mail');
 
 
 

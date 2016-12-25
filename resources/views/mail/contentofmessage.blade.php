@@ -18,7 +18,7 @@
       <br/>
 
    <b>Subject:</b>  {{$n->subject}}
-      <div class="panel-body">{{$n->message}}</div>
+      <div class="panel-body" style="height: 1000px"><?php    echo $n->message ?></div>
     </div>
 
     @endforeach

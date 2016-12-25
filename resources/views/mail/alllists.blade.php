@@ -41,14 +41,7 @@
                                
                                     
 
-<h1>
-<form action="{{url('list/'.$list->l_id)}}" method="POST">
-    
- {!! method_field('DELETE') !!} 
 
-          {{ csrf_field() }}
-    <input type="submit" name="delete" value="delete list" class="btn btn-danger">
-</form></h1>
                                     
                           
 
@@ -101,7 +94,15 @@
 
                                      <input type="submit" name="remove" value="Delete All From List" class="btn btn-warning">
                                                       </form>
-                                                      <br><br/>
+                                                      
+                                                      <h1>
+<form action="{{url('list/'.$list->l_id)}}" method="POST">
+    
+ {!! method_field('DELETE') !!} 
+
+          {{ csrf_field() }}
+    <input type="submit" name="delete" value="delete list" class="btn btn-danger">
+</form></h1>
                                  
 
                                      @endforeach

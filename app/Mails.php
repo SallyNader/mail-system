@@ -11,4 +11,7 @@ class Mails extends Model
 
 	protected $primaryKey ='m_id';
 	protected $table='mails';
+
+
+   protected $fillable=['subject','message','theme','person'];
 }
